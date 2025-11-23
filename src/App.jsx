@@ -1,18 +1,41 @@
-import './App.css';
-import {Stack, Button, Box} from '@mui/material';
+import { Box } from '@mui/material';
+import { Routes, Route, Navigate } from 'react-router-dom'; // 👈 lägg till Navigate
+import Login from './pages/Login';
+import Dashboard from './components/Dashboard/Dashboard';
+import SpotifyCallback from './pages/SpotifyCallback';
+import ProtectedRoute from './components/ProtectedRoute';
+import Home from './pages/Home';
 
-function App({spotifyApi}) {
-	console.log(spotifyApi);
-	return (
-		<Box className="App">
-			<h1>Techover Self Made - Spotify</h1>
-			<Stack spacing={2} direction="row">
-      			<Button variant="text">Text</Button>
-      			<Button variant="contained">Contained</Button>
-      			<Button variant="outlined">Outlined</Button>
-    		</Stack>
-		</Box>
-	);
+function App({ spotifyApi }) {
+  return (
+    <Box className="App">
+      <Routes>
+        <Route path="/login" element={<Login />} />
+        <Route path="/callback" element={<SpotifyCallback />} />
+
+        <Route
+          path="/dashboard"
+          element={
+            <ProtectedRoute>
+              <Dashboard spotifyApi={spotifyApi} />
+            </ProtectedRoute>
+          }
+        >
+          {/* Start-sidan inne i dashboard */}
+          <Route path="" element={<Home />} />
+
+          {/* Kommentar bort tills komponenterna finns */}
+          {/*
+          <Route path="playlist/:id" element={<Playlist spotifyApi={spotifyApi} />} />
+          <Route path="library" element={<Library spotifyApi={spotifyApi} />} />
+          */}
+        </Route>
+
+        {/* Redirecta allt annat */}
+        <Route path="*" element={<Navigate to="/dashboard" />} />
+      </Routes>
+    </Box>
+  );
 }
 
 export default App;
