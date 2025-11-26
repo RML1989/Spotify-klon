@@ -2,8 +2,8 @@ import { useState, useEffect } from 'react';
 import { Box } from '@mui/material';
 import SideNav from '../SideNav/SideNav';               // kolla så sökvägen stämmer
 import { Outlet } from 'react-router-dom';
-import { getAccessTokenFromStorage } from '../../utils/getAccessTokenFromStorage';
-// import Player from '../Player/Player';               // om ni har en Player-komponent
+import { getAccessTokenFromStorage } from '../../utils/getAccessTokenFromStorage'; 
+import Player from '../Player/Player';               
 // import MobileNav from '../MobileNav/MobileNav';      // om ni har en MobileNav-komponent
 
 const Dashboard = ({ spotifyApi }) => {
@@ -34,9 +34,9 @@ const Dashboard = ({ spotifyApi }) => {
         </Box>
       )}
 
-      {/* Kommentera dessa tills komponenterna finns */}
-      {/* {token && !isLoading && <Player spotifyApi={spotifyApi} />} */}
+      {token && !isLoading && <Player spotifyApi={spotifyApi} />}
       {/* {token && !isLoading && <MobileNav />} */}
+
     </Box>
   );
 };

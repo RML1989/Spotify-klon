@@ -5,6 +5,7 @@ import Dashboard from './components/Dashboard/Dashboard';
 import SpotifyCallback from './pages/SpotifyCallback';
 import ProtectedRoute from './components/ProtectedRoute';
 import Home from './pages/Home';
+import Playlist from './pages/Playlist'; 
 
 function App({ spotifyApi }) {
   return (
@@ -25,8 +26,8 @@ function App({ spotifyApi }) {
           <Route path="" element={<Home />} />
 
           {/* Kommentar bort tills komponenterna finns */}
-          {/*
           <Route path="playlist/:id" element={<Playlist spotifyApi={spotifyApi} />} />
+          {/*
           <Route path="library" element={<Library spotifyApi={spotifyApi} />} />
           */}
         </Route>
