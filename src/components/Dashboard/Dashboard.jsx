@@ -4,7 +4,8 @@ import SideNav from '../SideNav/SideNav';               // kolla så sökvägen 
 import { Outlet } from 'react-router-dom';
 import { getAccessTokenFromStorage } from '../../utils/getAccessTokenFromStorage'; 
 import Player from '../Player/Player';               
-// import MobileNav from '../MobileNav/MobileNav';      // om ni har en MobileNav-komponent
+import MobileNav from '../Mobilenav/Mobilenav';  
+import Library from '../../pages/Library'; 
 
 const Dashboard = ({ spotifyApi }) => {
   // ✅ rätt användning av useState
@@ -35,7 +36,7 @@ const Dashboard = ({ spotifyApi }) => {
       )}
 
       {token && !isLoading && <Player spotifyApi={spotifyApi} token={token}/>}
-      {/* {token && !isLoading && <MobileNav />} */}
+      <MobileNav />
 
     </Box>
   );

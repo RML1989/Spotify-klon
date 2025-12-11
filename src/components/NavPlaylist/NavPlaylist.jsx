@@ -1,24 +1,23 @@
 import { Box, Skeleton } from '@mui/material';
 import { NavLink } from 'react-router-dom';
-import './Navplaylist.css';
+import './NavPlaylist.css';
 
-const Navplaylist = ({ name, id, loading }) => {
-    return (
-        <NavLink className="playlist__navlink" to={loading ? '' : `/dashboard/playlist/${id}`} style={{ textDecoration: 'none' }}>
-            <Box 
-                px={3} 
-                py={1} 
-                sx={{
-                    cursor: 'pointer', 
-                    '&:hover': {color: 'white'},
-                    transition: 'color 0.2s ease-in-out',
-                    fontSize: 10
-                }}
-            >
-                {loading ? <Skeleton variant="text" sx={{ fontSize: 10 }} /> : name}
-            </Box>
-    </NavLink>
-    );
+const NavPlaylist = ({ name, id, loading }) => {
+	return (
+		<NavLink className="playlist__navlink" to={loading ? '' : `/dashboard/playlist/${id}`} style={{ textDecoration: 'none' }}>
+			<Box
+				px={3}
+				py={1}
+				sx={{
+					color: 'text.secondary',
+					cursor: 'pointer',
+					'&:hover': { color: 'text.primary' }
+				}}
+			>
+				{loading ? <Skeleton variant={'text'} height={'14px'} width={'70px'} /> : name}
+			</Box>
+		</NavLink>
+	);
 };
 
-export default Navplaylist;
+export default NavPlaylist;
